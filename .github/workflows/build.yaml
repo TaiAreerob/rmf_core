@@ -29,3 +29,14 @@ jobs:
         cd ws_rmf
         source /opt/ros/foxy/setup.bash
         colcon build --cmake-args -DCMAKE_BUILD_TYPE=RELEASE
+    - name: build_with_codecov
+        #reference: https://github.com/colcon/colcon-lcov-result
+        sudo apt update
+        sudo apt install lcov
+        sudo pip3 install lcov
+        cd ws_rmf
+        colcon build --symlink-install --cmake-args -DCMAKE_CXX_FLAGS='-fprofile-arcs -ftest-coverage' -DCMAKE_C_FLAGS='-fprofile-arcs -ftest-coverage'
+        colcon lcov-result --initial
+        colcon test
+        colcon lcov-result
+        #upload lcov/index.html to codecov.io
