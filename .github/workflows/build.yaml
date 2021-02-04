@@ -33,7 +33,7 @@ jobs:
       shell: bash
       run: |
         apt update
-        apt install lcov
+        apt install -y lcov
         pip3 install lcov
         cd ws_rmf
         colcon build --symlink-install --cmake-args -DCMAKE_CXX_FLAGS='-fprofile-arcs -ftest-coverage' -DCMAKE_C_FLAGS='-fprofile-arcs -ftest-coverage'
