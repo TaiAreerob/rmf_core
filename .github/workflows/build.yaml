@@ -23,17 +23,17 @@ jobs:
         cd ws_rmf
         rosdep update
         rosdep install --from-paths src --ignore-src --rosdistro foxy -yr
-    - name: build
-      shell: bash
-      run: |
-        cd ws_rmf
-        source /opt/ros/foxy/setup.bash
-        colcon build --cmake-args -DCMAKE_BUILD_TYPE=RELEASE
+    #- name: build
+      #shell: bash
+      #run: |
+        #cd ws_rmf
+        #source /opt/ros/foxy/setup.bash
+        #colcon build --cmake-args -DCMAKE_BUILD_TYPE=RELEASE
     - name: build_with_codecov
       shell: bash
       run: |
-        apt update
-        apt install -y lcov
+        sudo apt update
+        sudo apt install -y lcov
         #pip3 install lcov
         cd ws_rmf
         source /opt/ros/foxy/setup.bash
