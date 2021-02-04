@@ -41,4 +41,9 @@ jobs:
         colcon lcov-result --initial
         colcon test
         colcon lcov-result
-        #upload lcov/index.html to codecov.io
+    - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
+        with:
+          files: ws_rmf/lcov/total_coverage.info
+          flags: tests
+          name: lean_and_mean_codecov_bot
